@@ -1,0 +1,73 @@
+{
+    "name": "Wallet",
+    "version": "1.0.0",
+    "node-version": "16.14.2",
+    "description": "Wallet Backend Codebase",
+    "type": "module",
+    "author": "Tamilarasi",
+    "license": "ISC",
+    "scripts": {
+        "precommit": "lint-staged",
+        "start": "nodemon --experimental-modules --experimental-json-modules app.js",
+        "start:debug": "cross-env MODE=DEBUG PORT=5005 node app.js",
+        "lint": "./node_modules/.bin/eslint .  --ext .js --fix",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "postinstall": "link-module-alias",
+        "protect": "node protector.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run precommit"
+        }
+    },
+    "lint-staged": {
+        "/**/*.js": [
+            "eslint --fix",
+            "prettier --write",
+            "git add"
+        ]
+    },
+    "_moduleAliases": {
+        "appConfig": "config",
+        "error": "system/providers/error",
+        "baseController": "system/providers/base.controller.js"
+    },
+    "dependencies": {
+        "app-root-path": "3.0.0",
+        "body-parser": "1.19.0",
+        "compression": "1.7.4",
+        "cors": "2.8.5",
+        "dotenv": "8.2.0",
+        "express": "4.17.1",
+        "got": "11.8.2",
+        "helmet": "4.5.0",
+        "jwt-decode": "3.1.2",
+        "lodash": "4.17.21",
+        "moment": "2.29.1",
+        "mongoose": "^5.12.6",
+        "nodemon": "^2.0.20",
+        "swagger-ui-express": "4.1.6",
+        "uuid": "3.3.2",
+        "winston": "3.3.3",
+        "winston-daily-rotate-file": "4.5.2",
+        "winston-elasticsearch": "0.15.4"
+    },
+    "devDependencies": {
+        "cross-env": "7.0.3",
+        "eslint": "7.25.0",
+        "eslint-config-airbnb": "18.2.1",
+        "eslint-config-prettier": "8.3.0",
+        "eslint-plugin-import": "2.22.1",
+        "eslint-plugin-jsx-a11y": "6.4.1",
+        "eslint-plugin-react": "7.23.2",
+        "husky": "6.0.0",
+        "link-module-alias": "1.2.0",
+        "lint-staged": "10.5.4",
+        "prettier": "2.2.1",
+        "prettier-eslint": "12.0.0"
+    }
+}

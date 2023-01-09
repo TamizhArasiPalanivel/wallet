@@ -1,0 +1,22 @@
+{
+    "logger_config": {
+      "winston": {
+        "enableLog": true,
+        "emerg": true,
+        "alert": true,
+        "crit": true,
+        "error": true,
+        "warning": true,
+        "notice": true,
+        "info": true,
+        "debug": true,
+        "http": true,
+        "timeformat": "DD-MM-YYYY HH:mm:ss.SSS"
+      },
+      "vg_logger": {
+        "request": true,
+        "response": true
+      }
+    }
+  }
+  

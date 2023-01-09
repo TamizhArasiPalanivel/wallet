@@ -1,0 +1,93 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Wallet API documentation",
+        "version": "1.0.0",
+        "description": "Listing of  REST API specifications for Wallet project, Which are implemented using Express.js framework on top of Node.js. ",
+        "termsOfService": "",
+        "contact": {
+            "name": "",
+            "url": ""
+        }
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3025"
+        }
+    ],
+    "schemes": ["http", "https"],
+    "paths": {
+        "/setup": {
+            "post": {
+                "tags": ["Wallet"],
+                "summary": "Setup a new wallet",
+                "description": "",
+                "operationId": "",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "balance": {
+                                        "type": "integer",
+                                        "description": "wallet initial balance",
+                                        "example": 100
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "description": "wallet name",
+                                        "example": "Wallet1"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "date": {
+                                            "type": "string",
+                                            "example": "2023-01-09T10:51:28.566Z"
+                                        },
+                                        "balance": {
+                                            "type": "integer",
+                                            "example": 100
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Wallet1"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 50030
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "$ref": "#/responses/Err_Msg"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Wallet",
+            "description": "Wallet apis"
+        }
+    ]
+}
