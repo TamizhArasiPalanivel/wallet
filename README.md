@@ -39,3 +39,13 @@
 
 ### Wallet Number Sequence
 -   **WALLET_START_NUM**: "50000"
+
+
+
+### use this postman link to access the apis
+
+- https://api.postman.com/collections/25224695-7686c1f8-d824-4061-85b0-f8eca0e5e01f?access_key=PMAT-01GPBCJB3CNF6G26VNNDKZ0JNA
+
+- API documentation
+
+- https://documenter.postman.com/preview/25224695-fe397d95-b22b-427f-aa84-b8d35a407ae0?environment=&versionTag=latest&apiName=CURRENT&version=latest&documentationLayout=classic-double-column&right-sidebar=303030&top-bar=FFFFFF&highlight=EF5B25
