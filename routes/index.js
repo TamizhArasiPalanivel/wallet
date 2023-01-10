@@ -20,4 +20,6 @@ export default function routes(app) {
     app.post("/transact/:id", transactionController.doTransaction);
     //get transation with pagination
     app.get("/transactions", transactionController.getTransactions);
+    //get transation, csv export
+    app.get("/transactions/export", transactionController.csvExportTransactions);
 }

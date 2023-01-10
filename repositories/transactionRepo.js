@@ -14,7 +14,6 @@ export default class WalletRepo {
     async doTransaction(params) {
         appLogger.debug("Start of repo: UserRepo, Method: doTransaction", params);
         try {
-            console.log("paramsparams", params)
             return await this.transactionSchema(params).save();
         } catch (err) {
             appLogger.debug("End of repo: UserRepo, Method: doTransaction");
@@ -29,7 +28,6 @@ export default class WalletRepo {
     async getCurrentBalance(params) {
         appLogger.debug("Start of repo: UserRepo, Method: getCurrentBalance", params);
         try {
-            console.log("paramsparams", params)
             return await this.transactionSchema.findOne({walletId:params.walletId}).sort({_id:-1});
         } catch (err) {
             appLogger.debug("End of repo: UserRepo, Method: getCurrentBalance");
@@ -44,7 +42,6 @@ export default class WalletRepo {
     async getTransactions(query) {
         appLogger.debug("Start of repo: UserRepo, Method: getCurrentBalance", query);
         try {
-            console.log("paramsparams", JSON.stringify(query))
             return await this.transactionSchema.aggregate(query);
         } catch (err) {
             appLogger.debug("End of repo: UserRepo, Method: getCurrentBalance");

@@ -26,7 +26,6 @@ export default class WalletService {
             delete result.currentBalance;
             return result;
         } catch (err) {
-            console.log(err)
             appLogger.error("Error in Service: WalletService, Method: setUpWallet", err);
             throw err;
         } finally {
@@ -38,13 +37,11 @@ export default class WalletService {
             appLogger.debug("Start of service: WalletService, Method: getWallet", params);
             let result = await this.walletRepo.getWalletRec(params);
             result = JSON.parse(JSON.stringify(result))
-            console.log("resultresult", result)
             result.balance = result.currentBalance;
             delete result._id;
             delete result.currentBalance;
             return result;
         } catch (err) {
-            console.log(err)
             appLogger.error("Error in Service: WalletService, Method: getWallet", err);
             throw err;
         } finally {

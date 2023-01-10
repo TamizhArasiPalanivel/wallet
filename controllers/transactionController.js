@@ -49,7 +49,10 @@ export default class TransactionController extends BaseController{
             const params = {
                 walletId : req.query.walletId,
                 skip : req.query.skip || 0,
-                limit : req.query.limit || 10
+                limit : req.query.limit || 10,
+                sortBy: req.query.sortBy || null,
+                orderBy: req.query.orderBy && req.query.orderBy == "asc" ? 1 : -1,
+                downloadCSV: "N"
             }
             if (!params.walletId) {
                 appLogger.error("Error in controller: TransactionController, Method: getTransactions", 
@@ -69,6 +72,37 @@ export default class TransactionController extends BaseController{
             }
         } finally {
             appLogger.debug("End of controller: TransactionController, Method: getTransactions");
+        }
+    }
+
+    async csvExportTransactions(req, res) {
+        try {
+            appLogger.debug("Start of controller: TransactionController, Method: csvExportTransactions", `URL: ${req.originalUrl} PARAMS: ${JSON.stringify(req.params)} BODY: ${JSON.stringify(req.body)} QUERY: ${JSON.stringify(req.query)}`);
+            const params = {
+                walletId : req.query.walletId,
+                skip : req.query.skip || 0,
+                limit : req.query.limit || 10,
+                sortBy: req.query.sortBy || null,
+                orderBy: req.query.orderBy && req.query.orderBy == "asc" ? 1 : -1,
+                downloadCSV: "Y"
+            }
+            if (!params.walletId) {
+                appLogger.error("Error in controller: TransactionController, Method: csvExportTransactions", 
+                `URL: ${req.originalUrl} PARAMS: ${JSON.stringify(req.params)} BODY: ${JSON.stringify(req.body)} QUERY: ${JSON.stringify(req.query)}`);
+                res.error(null, ErrorCode.MISSING_WALLET_ID);
+            }
+            const result = await this.transactionService.getTransactions(params);
+            res.fileDownload(result.fileName, result.csv);
+        } catch (err) {
+            appLogger.error("Error in controller: TransactionController, Method: csvExportTransactions", err);
+            if (err.info) {
+                ErrorCode.INTERNAL_SERVER_ERROR.message = err.info;
+                res.error(null, ErrorCode.INTERNAL_SERVER_ERROR, err.info);
+            } else {
+                res.error(err, ErrorCode.INTERNAL_SERVER_ERROR);
+            }
+        } finally {
+            appLogger.debug("End of controller: TransactionController, Method: csvExportTransactions");
         }
     }
 }

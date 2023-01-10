@@ -5,7 +5,7 @@ const WalletSchema = new mongoose.Schema({
     name: { type: String, required: true },
     balance: { type: Number, required: true },
     currentBalance: { type: Number, required: true },
-    date: { type: Date, default: Date.now() }
+    date: { type: Date, default: Date.now }
     // createdBy: { type: String, default: "Logged in User will be taken from token" }
 },{ versionKey: false }, {toJSON: {getters: true}});
 

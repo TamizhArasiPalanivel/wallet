@@ -7,7 +7,7 @@ const TransactionSchema = new mongoose.Schema({
     description: { type: String, required: true },
     balance: { type: Number, required: true },
     type: { type: String, required: true },
-    date: { type: Date, default: Date.now() }
+    date: { type: Date, default: Date.now }
     // createdBy: { type: String, default: "Logged in User will be taken from token" }
 },{ versionKey: false }, {toJSON: {getters: true}});
 
