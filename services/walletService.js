@@ -36,10 +36,12 @@ export default class WalletService {
         try {
             appLogger.debug("Start of service: WalletService, Method: getWallet", params);
             let result = await this.walletRepo.getWalletRec(params);
-            result = JSON.parse(JSON.stringify(result))
+            result = JSON.parse(JSON.stringify(result));
+            if(result) {
             result.balance = result.currentBalance;
             delete result._id;
             delete result.currentBalance;
+            }
             return result;
         } catch (err) {
             appLogger.error("Error in Service: WalletService, Method: getWallet", err);
