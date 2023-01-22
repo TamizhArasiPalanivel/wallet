@@ -47,6 +47,17 @@ export default class WalletRepo {
             appLogger.debug("End of repo: WalletRepo, Method: getWalletRec");
         }
     }
+    async allWallet(params) {
+        appLogger.debug("Start of repo: WalletRepo, Method: allWallet", params);
+        try {
+            return await this.walletSchema.find({}).sort({_id:-1})
+        } catch (err) {
+            appLogger.error("Error in WalletRepo , Method: allWallet", err);
+            throw err;
+        } finally {
+            appLogger.debug("End of repo: WalletRepo, Method: allWallet");
+        }
+    }
     async doTransaction(params) {
         appLogger.debug("Start of repo: WalletRepo, Method: doTransaction", params);
         try {

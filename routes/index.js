@@ -13,6 +13,8 @@ export default function routes(app) {
     app.post("/setup", walletController.setUpWallet);
     //get wallet info
     app.get("/wallet/:id", walletController.getWallet);
+    //get all wallet 
+    app.get("/allWallet", walletController.allWallet);
 
     
     //transaction apis

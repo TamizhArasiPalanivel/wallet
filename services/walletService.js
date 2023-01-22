@@ -48,4 +48,20 @@ export default class WalletService {
             appLogger.debug("End of service: WalletService, Method: getWallet");
         }
     }
+    async allWallet(params) {
+        try {
+            appLogger.debug("Start of service: WalletService, Method: allWallet", params);
+            let result = await this.walletRepo.allWallet(params);
+            result = JSON.parse(JSON.stringify(result))
+            result.balance = result.currentBalance;
+            delete result._id;
+            delete result.currentBalance;
+            return result;
+        } catch (err) {
+            appLogger.error("Error in Service: WalletService, Method: allWallet", err);
+            throw err;
+        } finally {
+            appLogger.debug("End of service: WalletService, Method: allWallet");
+        }
+    }
 }

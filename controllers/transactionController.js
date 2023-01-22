@@ -13,7 +13,7 @@ export default class TransactionController extends BaseController{
             appLogger.debug("Start of controller: TransactionController, Method: doTransaction", `URL: ${req.originalUrl} PARAMS: ${JSON.stringify(req.params)} BODY: ${JSON.stringify(req.body)} QUERY: ${JSON.stringify(req.query)}`);
             const params = {
                 walletId : req.params.id,
-                amount : req.body.amount,
+                amount : parseFloat(req.body.amount),
                 description : req.body.description,
                 type: req.body.amount && req.body.amount > 0 ? "CREDIT" : "DEBIT"
             }
